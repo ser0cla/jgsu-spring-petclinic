@@ -40,24 +40,23 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Integration test of the Service and the Repository layer.
  * <p>
- * ClinicServiceSpringDataJpaTests subclasses benefit from the following
- * services provided by the Spring TestContext Framework:
+ * ClinicServiceSpringDataJpaTests subclasses benefit from the following services provided
+ * by the Spring TestContext Framework:
  * </p>
  * <ul>
- * <li><strong>Spring IoC container caching</strong> which spares us unnecessary
- * set up time between test execution.</li>
- * <li><strong>Dependency Injection</strong> of test fixture instances, meaning
- * that we don't need to perform application context lookups. See the use of
+ * <li><strong>Spring IoC container caching</strong> which spares us unnecessary set up
+ * time between test execution.</li>
+ * <li><strong>Dependency Injection</strong> of test fixture instances, meaning that we
+ * don't need to perform application context lookups. See the use of
  * {@link Autowired @Autowired} on the <code>{@link
- * ClinicServiceTests#clinicService clinicService}</code> instance variable,
- * which uses autowiring <em>by type</em>.
- * <li><strong>Transaction management</strong>, meaning each test method is
- * executed in its own transaction, which is automatically rolled back by
- * default. Thus, even if tests insert or otherwise change database state, there
- * is no need for a teardown or cleanup script.
- * <li>An {@link org.springframework.context.ApplicationContext
- * ApplicationContext} is also inherited and can be used for explicit bean
- * lookup if necessary.</li>
+ * ClinicServiceTests#clinicService clinicService}</code> instance variable, which uses
+ * autowiring <em>by type</em>.
+ * <li><strong>Transaction management</strong>, meaning each test method is executed in
+ * its own transaction, which is automatically rolled back by default. Thus, even if tests
+ * insert or otherwise change database state, there is no need for a teardown or cleanup
+ * script.
+ * <li>An {@link org.springframework.context.ApplicationContext ApplicationContext} is
+ * also inherited and can be used for explicit bean lookup if necessary.</li>
  * </ul>
  *
  * @author Ken Krebs
@@ -82,42 +81,42 @@ class ClinicServiceTests {
 	@Autowired
 	protected VetRepository vets;
 
-	// @Test
-	// void shouldFindOwnersByLastName() {
-	// Collection<Owner> owners = this.owners.findByLastName("Davis");
-	// assertThat(owners).hasSize(2);
+	@Test
+	void shouldFindOwnersByLastName() {
+		Collection<Owner> owners = this.owners.findByLastName("Davis");
+		assertThat(owners).hasSize(2);
 
-	// owners = this.owners.findByLastName("Daviss");
-	// assertThat(owners).isEmpty();
-	// }
+		owners = this.owners.findByLastName("Daviss");
+		assertThat(owners).isEmpty();
+	}
 
-	// @Test
-	// void shouldFindSingleOwnerWithPet() {
-	// Owner owner = this.owners.findById(1);
-	// assertThat(owner.getLastName()).startsWith("Franklin");
-	// assertThat(owner.getPets()).hasSize(1);
-	// assertThat(owner.getPets().get(0).getType()).isNotNull();
-	// assertThat(owner.getPets().get(0).getType().getName()).isEqualTo("cat");
-	// }
+	@Test
+	void shouldFindSingleOwnerWithPet() {
+		Owner owner = this.owners.findById(1);
+		assertThat(owner.getLastName()).startsWith("Franklin");
+		assertThat(owner.getPets()).hasSize(1);
+		assertThat(owner.getPets().get(0).getType()).isNotNull();
+		assertThat(owner.getPets().get(0).getType().getName()).isEqualTo("cat");
+	}
 
-	// @Test
-	// @Transactional
-	// void shouldInsertOwner() {
-	// Collection<Owner> owners = this.owners.findByLastName("Schultz");
-	// int found = owners.size();
+	@Test
+	@Transactional
+	void shouldInsertOwner() {
+		Collection<Owner> owners = this.owners.findByLastName("Schultz");
+		int found = owners.size();
 
-	// Owner owner = new Owner();
-	// owner.setFirstName("Sam");
-	// owner.setLastName("Schultz");
-	// owner.setAddress("4, Evans Street");
-	// owner.setCity("Wollongong");
-	// owner.setTelephone("4444444444");
-	// this.owners.save(owner);
-	// assertThat(owner.getId().longValue()).isNotEqualTo(0);
+		Owner owner = new Owner();
+		owner.setFirstName("Sam");
+		owner.setLastName("Schultz");
+		owner.setAddress("4, Evans Street");
+		owner.setCity("Wollongong");
+		owner.setTelephone("4444444444");
+		this.owners.save(owner);
+		assertThat(owner.getId().longValue()).isNotEqualTo(0);
 
-	// owners = this.owners.findByLastName("Schultz");
-	// assertThat(owners.size()).isEqualTo(found + 1);
-	// }
+		owners = this.owners.findByLastName("Schultz");
+		assertThat(owners.size()).isEqualTo(found + 1);
+	}
 
 	// @Test
 	// @Transactional
