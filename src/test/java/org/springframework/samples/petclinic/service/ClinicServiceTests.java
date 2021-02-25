@@ -82,14 +82,14 @@ class ClinicServiceTests {
 	@Autowired
 	protected VetRepository vets;
 
-	@Test
-	void shouldFindOwnersByLastName() {
-		Collection<Owner> owners = this.owners.findByLastName("Davis");
-		assertThat(owners).hasSize(2);
+	// @Test
+	// void shouldFindOwnersByLastName() {
+	// Collection<Owner> owners = this.owners.findByLastName("Davis");
+	// assertThat(owners).hasSize(2);
 
-		owners = this.owners.findByLastName("Daviss");
-		assertThat(owners).isEmpty();
-	}
+	// owners = this.owners.findByLastName("Daviss");
+	// assertThat(owners).isEmpty();
+	// }
 
 	// @Test
 	// void shouldFindSingleOwnerWithPet() {
