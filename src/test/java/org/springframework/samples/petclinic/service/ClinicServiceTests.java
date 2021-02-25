@@ -118,38 +118,38 @@ class ClinicServiceTests {
 		assertThat(owners.size()).isEqualTo(found + 1);
 	}
 
-	// @Test
-	// @Transactional
-	// void shouldUpdateOwner() {
-	// Owner owner = this.owners.findById(1);
-	// String oldLastName = owner.getLastName();
-	// String newLastName = oldLastName + "X";
+	@Test
+	@Transactional
+	void shouldUpdateOwner() {
+		Owner owner = this.owners.findById(1);
+		String oldLastName = owner.getLastName();
+		String newLastName = oldLastName + "X";
 
-	// owner.setLastName(newLastName);
-	// this.owners.save(owner);
+		owner.setLastName(newLastName);
+		this.owners.save(owner);
 
-	// // retrieving new name from database
-	// owner = this.owners.findById(1);
-	// assertThat(owner.getLastName()).isEqualTo(newLastName);
-	// }
+		// retrieving new name from database
+		owner = this.owners.findById(1);
+		assertThat(owner.getLastName()).isEqualTo(newLastName);
+	}
 
-	// @Test
-	// void shouldFindPetWithCorrectId() {
-	// Pet pet7 = this.pets.findById(7);
-	// assertThat(pet7.getName()).startsWith("Samantha");
-	// assertThat(pet7.getOwner().getFirstName()).isEqualTo("Jean");
+	@Test
+	void shouldFindPetWithCorrectId() {
+		Pet pet7 = this.pets.findById(7);
+		assertThat(pet7.getName()).startsWith("Samantha");
+		assertThat(pet7.getOwner().getFirstName()).isEqualTo("Jean");
 
-	// }
+	}
 
-	// @Test
-	// void shouldFindAllPetTypes() {
-	// Collection<PetType> petTypes = this.pets.findPetTypes();
+	@Test
+	void shouldFindAllPetTypes() {
+		Collection<PetType> petTypes = this.pets.findPetTypes();
 
-	// PetType petType1 = EntityUtils.getById(petTypes, PetType.class, 1);
-	// assertThat(petType1.getName()).isEqualTo("cat");
-	// PetType petType4 = EntityUtils.getById(petTypes, PetType.class, 4);
-	// assertThat(petType4.getName()).isEqualTo("snake");
-	// }
+		PetType petType1 = EntityUtils.getById(petTypes, PetType.class, 1);
+		assertThat(petType1.getName()).isEqualTo("cat");
+		PetType petType4 = EntityUtils.getById(petTypes, PetType.class, 4);
+		assertThat(petType4.getName()).isEqualTo("snake");
+	}
 
 	// @Test
 	// @Transactional
