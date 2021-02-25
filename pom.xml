@@ -150,6 +150,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <forkCount>0</forkCount>
+        </configuration>
         <version>3.1.1</version>
         <dependencies>
           <dependency>
