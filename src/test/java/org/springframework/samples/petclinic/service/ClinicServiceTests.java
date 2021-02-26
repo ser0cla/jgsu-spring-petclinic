@@ -133,23 +133,23 @@ class ClinicServiceTests {
 		assertThat(owner.getLastName()).isEqualTo(newLastName);
 	}
 
-	@Test
-	void shouldFindPetWithCorrectId() {
-		Pet pet7 = this.pets.findById(7);
-		assertThat(pet7.getName()).startsWith("Samantha");
-		assertThat(pet7.getOwner().getFirstName()).isEqualTo("Jean");
+	// @Test
+	// void shouldFindPetWithCorrectId() {
+	// Pet pet7 = this.pets.findById(7);
+	// assertThat(pet7.getName()).startsWith("Samantha");
+	// assertThat(pet7.getOwner().getFirstName()).isEqualTo("Jean");
 
-	}
+	// }
 
-	@Test
-	void shouldFindAllPetTypes() {
-		Collection<PetType> petTypes = this.pets.findPetTypes();
+	// @Test
+	// void shouldFindAllPetTypes() {
+	// Collection<PetType> petTypes = this.pets.findPetTypes();
 
-		PetType petType1 = EntityUtils.getById(petTypes, PetType.class, 1);
-		assertThat(petType1.getName()).isEqualTo("cat");
-		PetType petType4 = EntityUtils.getById(petTypes, PetType.class, 4);
-		assertThat(petType4.getName()).isEqualTo("snake");
-	}
+	// PetType petType1 = EntityUtils.getById(petTypes, PetType.class, 1);
+	// assertThat(petType1.getName()).isEqualTo("cat");
+	// PetType petType4 = EntityUtils.getById(petTypes, PetType.class, 4);
+	// assertThat(petType4.getName()).isEqualTo("snake");
+	// }
 
 	// @Test
 	// @Transactional
